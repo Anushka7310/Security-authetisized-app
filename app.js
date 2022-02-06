@@ -37,11 +37,9 @@ const userSchema = new mongoose.Schema({
   password: String,
 });
 
-
 //to hash and save our passwords and to save it in mongoose database/////
 userSchema.plugin(passportLocalMongoose);
 userSchema.plugin(findOrCreate);
-
 
 const User = new mongoose.model("User", userSchema);
 
@@ -71,6 +69,10 @@ passport.use(
 
 app.get("/", function (req, res) {
   res.render("home");
+});
+
+app.get("/auth/google", function (req, res) {
+  res.render("login");
 });
 
 app.get("/login", function (req, res) {
